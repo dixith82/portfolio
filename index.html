@@ -12,147 +12,87 @@
       line-height:1.6;
       color:#333;
       background:#f4f7f9;
-      transition:background 0.3s, color 0.3s;
+      transition: background 0.3s, color 0.3s;
     }
     body.dark-mode {background:#1a1a1a; color:#eee;}
-    h2 {
-      margin-bottom:20px;
-      color:#222;
-      border-bottom:3px solid #0077b6;
-      display:inline-block;
-      padding-bottom:5px;
-    }
+    h2 {margin-bottom:20px; color:#222; border-bottom:3px solid #0077b6; display:inline-block; padding-bottom:5px;}
     body.dark-mode h2 {color:#fff; border-bottom:3px solid #00b4d8;}
     p {margin-bottom:15px;}
     ul {list-style-type:none; padding-left:0;}
-    ul li {
-      padding:8px 0;
-      border-bottom:1px solid #eee;
-    }
+    ul li {padding:8px 0; border-bottom:1px solid #eee;}
     ul li:last-child {border-bottom:none;}
     a {text-decoration:none;}
     body.dark-mode a {color:#00b4d8;}
 
     /* ===== Header Section ===== */
     header {
-      background:#0077b6;
-      color:#fff;
-      padding:40px 0;
-      text-align:center;
-      position:relative;
+      position: relative;
+      overflow: hidden;
+      padding: 60px 20px;
+      text-align: center;
+      color: #fff;
+      z-index: 1;
+      background: linear-gradient(-45deg,#0077b6,#00b4d8,#0096c7,#00b4d8);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
     }
-    header img {
-      width:150px;
-      height:150px;
-      border-radius:50%;
-      border:4px solid #fff;
-      margin-bottom:15px;
-      transition: transform 0.3s ease;
+    @keyframes gradientBG {
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
     }
-    header img:hover {transform: scale(1.1);}
-    header h1 {font-size:2.5rem;}
-    header p {color:#eee; font-size:1.1rem;}
+    #particles {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+    }
+    .header-content {position: relative; z-index: 2;}
+    header img {width:150px; height:150px; border-radius:50%; border:4px solid #fff; margin-bottom:15px; transform: scale(0); animation: fadeIn 1s ease forwards;}
     .resume-btn {
-      display:inline-block;
-      background:#00b4d8;
-      color:#fff;
-      padding:10px 20px;
-      margin-top:15px;
-      border-radius:5px;
-      font-weight:bold;
-      transition:0.3s;
-    }
-    .resume-btn:hover {background:#0096c7;}
+    -webkit-backdrop-filter: blur(5px); /* Safari first */
+    backdrop-filter: blur(5px);         /* Standard property after */
+    background: rgba(255,255,255,0.25);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    padding: 10px 20px; 
+    border-radius: 30px;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 15px;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;}
 
-    /* Dark Mode Button */
-    .dark-toggle {
-      position:absolute;
-      top:20px;
-      right:20px;
-      background:#00b4d8;
-      border:none;
-      padding:10px 15px;
-      border-radius:5px;
-      cursor:pointer;
-      color:#fff;
-      font-weight:bold;
-    }
+
+    .resume-btn:hover {background: rgba(255,255,255,0.35); transform: translateY(-3px); box-shadow:0 5px 15px rgba(0,0,0,0.2);}
+    .dark-toggle {position:absolute; top:20px; right:20px; background:#00b4d8; border:none; padding:10px 15px; border-radius:5px; cursor:pointer; color:#fff; font-weight:bold;}
 
     /* ===== Navigation ===== */
-    nav {
-      background:#005f99;
-      display:flex;
-      flex-wrap:wrap;
-      justify-content:center;
-    }
-    nav a {
-      color:#fff;
-      padding:14px 20px;
-      text-decoration:none;
-      transition:0.3s;
-    }
+    nav {background:#005f99; display:flex; flex-wrap:wrap; justify-content:center;}
+    nav a {color:#fff; padding:14px 20px; text-decoration:none; transition:0.3s;}
     nav a:hover {background:#0077b6;}
 
     /* ===== Section & Card Styles ===== */
-    section {
-      padding:40px 20px;
-      max-width:1100px;
-      margin:auto;
-    }
-    .card {
-      background:#fff;
-      margin-bottom:30px;
-      padding:25px;
-      border-radius:10px;
-      box-shadow:0 2px 8px rgba(0,0,0,0.1);
-      transition:transform 0.3s ease, box-shadow 0.3s ease;
-    }
+    section {padding:40px 20px; max-width:1100px; margin:auto;}
+    .card {background:#fff; margin-bottom:30px; padding:25px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1); transition:transform 0.3s ease, box-shadow 0.3s ease;}
     body.dark-mode .card {background:#2b2b2b; box-shadow:0 2px 8px rgba(255,255,255,0.05);}
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow:0 6px 15px rgba(0,0,0,0.2);
-    }
+    .card:hover {transform: translateY(-5px); box-shadow:0 6px 15px rgba(0,0,0,0.2);}
 
     /* ===== Project Grid ===== */
-    .projects-grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-      gap:20px;
-    }
-    .project-card {
-      background:#fff;
-      padding:20px;
-      border-radius:10px;
-      box-shadow:0 2px 8px rgba(0,0,0,0.1);
-    }
+    .projects-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px;}
+    .project-card {background:#fff; padding:20px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1);}
     body.dark-mode .project-card {background:#333;}
     .project-card h3 {margin-bottom:10px; color:#0077b6;}
     .project-card p {font-size:0.95rem;}
 
     /* ===== Timeline ===== */
     .timeline {position:relative; padding-left:40px;}
-    .timeline::before {
-      content:""; position:absolute; left:20px; top:0; bottom:0; width:4px; background:#0077b6;
-    }
+    .timeline::before {content:""; position:absolute; left:20px; top:0; bottom:0; width:4px; background:#0077b6;}
     .timeline-item {margin-bottom:20px; position:relative;}
-    .timeline-item::before {
-      content:""; position:absolute; left:-27px; top:5px;
-      width:15px; height:15px; background:#fff;
-      border:3px solid #0077b6; border-radius:50%;
-    }
+    .timeline-item::before {content:""; position:absolute; left:-27px; top:5px; width:15px; height:15px; background:#fff; border:3px solid #0077b6; border-radius:50%;}
 
     /* ===== Testimonials ===== */
-    .testimonials {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:20px;
-    }
-    .testimonial {
-      padding:20px;
-      background:#f9f9f9;
-      border-radius:8px;
-      font-style:italic;
-    }
+    .testimonials {display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px;}
+    .testimonial {padding:20px; background:#f9f9f9; border-radius:8px; font-style:italic;}
     body.dark-mode .testimonial {background:#3a3a3a;}
 
     /* ===== Gallery ===== */
@@ -161,57 +101,32 @@
     .gallery img:hover {transform:scale(1.05);}
 
     /* ===== Blog ===== */
-    .blog-post {
-      margin-bottom:20px;
-      padding:15px;
-      border-left:4px solid #0077b6;
-      background:#f9f9f9;
-      border-radius:6px;
-    }
+    .blog-post {margin-bottom:20px; padding:15px; border-left:4px solid #0077b6; background:#f9f9f9; border-radius:6px;}
     body.dark-mode .blog-post {background:#333;}
 
     /* ===== Scroll to Top ===== */
-    #topBtn {
-      position:fixed;
-      bottom:20px;
-      right:20px;
-      background:#00b4d8;
-      color:#fff;
-      border:none;
-      padding:12px 15px;
-      border-radius:50%;
-      font-size:20px;
-      cursor:pointer;
-      display:none;
-    }
+    #topBtn {position:fixed; bottom:20px; right:20px; background:#00b4d8; color:#fff; border:none; padding:12px 15px; border-radius:50%; font-size:20px; cursor:pointer; display:none;}
 
     /* ===== Footer ===== */
-    footer {
-      background:#0077b6;
-      color:#fff;
-      text-align:center;
-      padding:20px;
-      margin-top:20px;
-    }
+    footer {background:#0077b6; color:#fff; text-align:center; padding:20px; margin-top:20px;}
     footer a {color:#fff; text-decoration:underline;}
 
     /* ===== Responsive ===== */
-    @media(max-width:768px){
-      header h1 {font-size:2rem;}
-      nav {flex-direction:column;}
-      nav a {border-top:1px solid #444;}
-    }
+    @media(max-width:768px){header h1 {font-size:2rem;} nav {flex-direction:column;} nav a {border-top:1px solid #444;}}
   </style>
 </head>
 <body>
 
   <!-- ===== Header ===== -->
-  <header>
+  <header id="header">
+    <canvas id="particles"></canvas>
     <button class="dark-toggle" onclick="toggleDarkMode()">🌙</button>
-    <img src="profile.jpg" alt="Profile Photo">
-    <h1>Pannala Dixith Reddy</h1>
-    <p>B.Tech in Computer Science & Engineering (AIML) | Python & Full Stack Developer | AI Enthusiast</p>
-    <a href="pannala dixith reddy me.pdf" class="resume-btn" download>Download Resume</a>
+    <div class="header-content">
+      <img src="profile.jpg" alt="Profile Photo">
+      <h1>Pannala Dixith Reddy</h1>
+      <p>B.Tech in CSE (AIML) | Python & Full Stack Developer | AI Enthusiast</p>
+      <a href="pannala dixith reddy me.pdf" class="resume-btn" download>Download Resume</a>
+    </div>
   </header>
 
   <!-- ===== Navigation ===== -->
@@ -360,8 +275,8 @@
     <h2>Contact Me</h2>
     <p>Email: <a href="mailto:dixithreddy82@gmail.com">dixithreddy82@gmail.com</a></p>
     <p>Phone: <a href="tel:+918074520692">+91 8074520692</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/pannala-dixith-reddy-024b61317" target="_blank" rel="noopener noreferrer">linkedin.com/in/pannala-dixith-reddy</a></p>
-    <p>GitHub: <a href="https://github.com/dixith82" target="_blank" rel="noopener noreferrer">github.com/dixith82</a></p>
+    <a href="https://www.linkedin.com/in/pannala-dixith-reddy-024b61317" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="https://github.com/dixith82" target="_blank" rel="noopener noreferrer">GitHub</a>
     <p>Location: Hyderabad, India</p>
   </section>
 
@@ -373,11 +288,13 @@
   <!-- Scroll to Top -->
   <button id="topBtn" onclick="scrollToTop()">↑</button>
 
+  <!-- ===== Scripts ===== -->
   <script>
     // Dark Mode Toggle
     function toggleDarkMode() {
       document.body.classList.toggle("dark-mode");
     }
+
     // Scroll to Top
     const topBtn = document.getElementById("topBtn");
     window.onscroll = function() {
@@ -390,6 +307,82 @@
     function scrollToTop() {
       window.scrollTo({top:0, behavior:"smooth"});
     }
+
+    // Particles JS
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let particlesArray;
+    let mouse = { x: null, y: null, radius: 150 };
+
+    window.addEventListener('mousemove', function(e){ mouse.x = e.x; mouse.y = e.y; });
+    window.addEventListener('mouseout', function(){ mouse.x = null; mouse.y = null; });
+
+    function initParticles() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      particlesArray = [];
+      for (let i=0; i<100; i++){
+        particlesArray.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 3 + 1,
+          speedX: (Math.random() - 0.5) * 2,
+          speedY: (Math.random() - 0.5) * 2
+        });
+      }
+    }
+
+    function connectParticles() {
+      for(let a=0; a<particlesArray.length; a++){
+        for(let b=a+1; b<particlesArray.length; b++){
+          let dx = particlesArray[a].x - particlesArray[b].x;
+          let dy = particlesArray[a].y - particlesArray[b].y;
+          let distance = Math.sqrt(dx*dx + dy*dy);
+          if(distance < 120){
+            ctx.strokeStyle = 'rgba(255,255,255,'+(1-distance/120)+')';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      particlesArray.forEach(p=>{
+        if(mouse.x && mouse.y){
+          let dx = mouse.x - p.x;
+          let dy = mouse.y - p.y;
+          let dist = Math.sqrt(dx*dx + dy*dy);
+          if(dist < mouse.radius){
+            let angle = Math.atan2(dy, dx);
+            let force = (mouse.radius - dist)/mouse.radius;
+            p.x -= Math.cos(angle)*force;
+            p.y -= Math.sin(angle)*force;
+          }
+        }
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+        ctx.fillStyle = 'rgba(255,255,255,0.7)';
+        ctx.fill();
+
+        p.x += p.speedX;
+        p.y += p.speedY;
+
+        if(p.x <0 || p.x>canvas.width) p.speedX*=-1;
+        if(p.y <0 || p.y>canvas.height) p.speedY*=-1;
+      });
+      connectParticles();
+      requestAnimationFrame(animateParticles);
+    }
+
+    window.addEventListener('resize', initParticles);
+    initParticles();
+    animateParticles();
   </script>
+
 </body>
 </html>
