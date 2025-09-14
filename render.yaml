@@ -3,5 +3,5 @@ services:
     name: portfolio
     env: static
     buildCommand: ""        # no build step needed for static HTML
-    staticPublishPath: "/"  # serve files from root directory
+    staticPublishPath: "."  # serve files from root directory
     plan: free
