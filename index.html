@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pannala Dixith Reddy | Portfolio</title>
+  <style>
+    /* ===== Global Styles ===== */
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height:1.6;
+      color:#333;
+      background:#f4f7f9;
+      transition:background 0.3s, color 0.3s;
+    }
+    body.dark-mode {background:#1a1a1a; color:#eee;}
+    h2 {
+      margin-bottom:20px;
+      color:#222;
+      border-bottom:3px solid #0077b6;
+      display:inline-block;
+      padding-bottom:5px;
+    }
+    body.dark-mode h2 {color:#fff; border-bottom:3px solid #00b4d8;}
+    p {margin-bottom:15px;}
+    ul {list-style-type:none; padding-left:0;}
+    ul li {
+      padding:8px 0;
+      border-bottom:1px solid #eee;
+    }
+    ul li:last-child {border-bottom:none;}
+    a {text-decoration:none;}
+    body.dark-mode a {color:#00b4d8;}
+
+    /* ===== Header Section ===== */
+    header {
+      background:#0077b6;
+      color:#fff;
+      padding:40px 0;
+      text-align:center;
+      position:relative;
+    }
+    header img {
+      width:150px;
+      height:150px;
+      border-radius:50%;
+      border:4px solid #fff;
+      margin-bottom:15px;
+      transition: transform 0.3s ease;
+    }
+    header img:hover {transform: scale(1.1);}
+    header h1 {font-size:2.5rem;}
+    header p {color:#eee; font-size:1.1rem;}
+    .resume-btn {
+      display:inline-block;
+      background:#00b4d8;
+      color:#fff;
+      padding:10px 20px;
+      margin-top:15px;
+      border-radius:5px;
+      font-weight:bold;
+      transition:0.3s;
+    }
+    .resume-btn:hover {background:#0096c7;}
+
+    /* Dark Mode Button */
+    .dark-toggle {
+      position:absolute;
+      top:20px;
+      right:20px;
+      background:#00b4d8;
+      border:none;
+      padding:10px 15px;
+      border-radius:5px;
+      cursor:pointer;
+      color:#fff;
+      font-weight:bold;
+    }
+
+    /* ===== Navigation ===== */
+    nav {
+      background:#005f99;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+    nav a {
+      color:#fff;
+      padding:14px 20px;
+      text-decoration:none;
+      transition:0.3s;
+    }
+    nav a:hover {background:#0077b6;}
+
+    /* ===== Section & Card Styles ===== */
+    section {
+      padding:40px 20px;
+      max-width:1100px;
+      margin:auto;
+    }
+    .card {
+      background:#fff;
+      margin-bottom:30px;
+      padding:25px;
+      border-radius:10px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+      transition:transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    body.dark-mode .card {background:#2b2b2b; box-shadow:0 2px 8px rgba(255,255,255,0.05);}
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow:0 6px 15px rgba(0,0,0,0.2);
+    }
+
+    /* ===== Project Grid ===== */
+    .projects-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:20px;
+    }
+    .project-card {
+      background:#fff;
+      padding:20px;
+      border-radius:10px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    }
+    body.dark-mode .project-card {background:#333;}
+    .project-card h3 {margin-bottom:10px; color:#0077b6;}
+    .project-card p {font-size:0.95rem;}
+
+    /* ===== Timeline ===== */
+    .timeline {position:relative; padding-left:40px;}
+    .timeline::before {
+      content:""; position:absolute; left:20px; top:0; bottom:0; width:4px; background:#0077b6;
+    }
+    .timeline-item {margin-bottom:20px; position:relative;}
+    .timeline-item::before {
+      content:""; position:absolute; left:-27px; top:5px;
+      width:15px; height:15px; background:#fff;
+      border:3px solid #0077b6; border-radius:50%;
+    }
+
+    /* ===== Testimonials ===== */
+    .testimonials {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:20px;
+    }
+    .testimonial {
+      padding:20px;
+      background:#f9f9f9;
+      border-radius:8px;
+      font-style:italic;
+    }
+    body.dark-mode .testimonial {background:#3a3a3a;}
+
+    /* ===== Gallery ===== */
+    .gallery {display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px;}
+    .gallery img {width:100%; border-radius:8px; transition:transform 0.3s;}
+    .gallery img:hover {transform:scale(1.05);}
+
+    /* ===== Blog ===== */
+    .blog-post {
+      margin-bottom:20px;
+      padding:15px;
+      border-left:4px solid #0077b6;
+      background:#f9f9f9;
+      border-radius:6px;
+    }
+    body.dark-mode .blog-post {background:#333;}
+
+    /* ===== Scroll to Top ===== */
+    #topBtn {
+      position:fixed;
+      bottom:20px;
+      right:20px;
+      background:#00b4d8;
+      color:#fff;
+      border:none;
+      padding:12px 15px;
+      border-radius:50%;
+      font-size:20px;
+      cursor:pointer;
+      display:none;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background:#0077b6;
+      color:#fff;
+      text-align:center;
+      padding:20px;
+      margin-top:20px;
+    }
+    footer a {color:#fff; text-decoration:underline;}
+
+    /* ===== Responsive ===== */
+    @media(max-width:768px){
+      header h1 {font-size:2rem;}
+      nav {flex-direction:column;}
+      nav a {border-top:1px solid #444;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header>
+    <button class="dark-toggle" onclick="toggleDarkMode()">🌙</button>
+    <img src="profile.jpg" alt="Profile Photo">
+    <h1>Pannala Dixith Reddy</h1>
+    <p>B.Tech in Computer Science & Engineering (AIML) | Python & Full Stack Developer | AI Enthusiast</p>
+    <a href="pannala dixith reddy me.pdf" class="resume-btn" download>Download Resume</a>
+  </header>
+
+  <!-- ===== Navigation ===== -->
+  <nav>
+    <a href="#about">About</a>
+    <a href="#career">Objective</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#services">Services</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#blog">Blog</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- ===== About ===== -->
+  <section id="about" class="card">
+    <h2>About Me</h2>
+    <p>Hello! I am <strong>Pannala Dixith Reddy</strong>, currently pursuing my B.Tech in Computer Science and Engineering (AIML specialization) at MRCET, Hyderabad.</p>
+    <p>Passionate about AI, Machine Learning, and Full Stack Development, I aim to build real-world applications that solve impactful problems.</p>
+  </section>
+
+  <!-- ===== Career Objective ===== -->
+  <section id="career" class="card">
+    <h2>Career Objective</h2>
+    <p>To gain hands-on experience in Python and full-stack development, contribute to impactful projects, and grow as a future-ready tech professional.</p>
+  </section>
+
+  <!-- ===== Skills ===== -->
+  <section id="skills" class="card">
+    <h2>Technical Skills</h2>
+    <ul>
+      <li>Programming: Python, Java, C, JavaScript, TypeScript, PHP</li>
+      <li>Frontend: HTML5, CSS3, Bootstrap, Tailwind, React.js, Angular, Streamlit</li>
+      <li>Backend: Node.js, Django, Express.js, Flask, PHP</li>
+      <li>Mobile Development: React Native</li>
+      <li>Databases: MySQL, PostgreSQL, MongoDB</li>
+      <li>Web Services: REST APIs, AJAX, jQuery, JSON</li>
+      <li>Analytics: Pandas, NumPy, Matplotlib, Power BI</li>
+      <li>Machine Learning: scikit-learn, TensorFlow, Keras</li>
+      <li>Cloud & Tools: AWS, Git/GitHub, Postman, Figma, WordPress</li>
+      <li>Other: SEO, Website Optimization, UI/UX Design</li>
+    </ul>
+  </section>
+
+  <!-- ===== Education ===== -->
+  <section id="education" class="card">
+    <h2>Education</h2>
+    <ul>
+      <li><strong>B.Tech (CSE - AIML)</strong> – MRCET, Hyderabad | 2022–2026 | GPA: 7.12</li>
+      <li><strong>Intermediate (MPC)</strong> – SR Junior College, Telangana | 2022 | 599/1000 (88%)</li>
+      <li><strong>SSC</strong> – Sacred Heart Convent High School, Telangana | GPA: 7.2</li>
+    </ul>
+  </section>
+
+  <!-- ===== Experience ===== -->
+  <section id="experience" class="card">
+    <h2>Work Experience</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>Machine Learning Intern – Cognifyz Technologies (Remote)</h3>
+        <p>July 2025 – August 2025</p>
+        <p>Worked on real-world ML projects with Python, scikit-learn, TensorFlow, and Keras. Handled data preprocessing, visualization, and model building.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>Python Programming Intern – Micro Information Technology Services</h3>
+        <p>June 2025 – July 2025</p>
+        <p>Worked on automation, scripting, and OOP modules. Gained exposure to real-time project workflows.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Projects ===== -->
+  <section id="projects" class="card">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>WhatsApp Chat Analyzer</h3>
+        <p>Visual dashboard for analyzing chat frequency, word clouds, and user activity.</p>
+        <p><strong>Tech:</strong> Python, Pandas, Matplotlib, Streamlit</p>
+      </div>
+      <div class="project-card">
+        <h3>Smart Card Fare Collection System</h3>
+        <p>Automated NFC-based fare collection with Streamlit dashboard.</p>
+        <p><strong>Tech:</strong> Python, NFC Modules, Streamlit</p>
+      </div>
+      <div class="project-card">
+        <h3>OCR System</h3>
+        <p>Optical Character Recognition using OpenCV & Tesseract with 90% accuracy.</p>
+        <p><strong>Tech:</strong> Python, OpenCV, Tesseract</p>
+      </div>
+      <div class="project-card">
+        <h3>Signature Verification</h3>
+        <p>Automated fraud detection prototype using SIFT + SVM classification.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Services ===== -->
+  <section id="services" class="card">
+    <h2>Services</h2>
+    <ul>
+      <li>AI/ML Model Development</li>
+      <li>Full Stack Web Development</li>
+      <li>Mobile App Development (React Native)</li>
+      <li>Data Visualization & Analytics</li>
+    </ul>
+  </section>
+
+  <!-- ===== Testimonials ===== -->
+  <section id="testimonials" class="card">
+    <h2>Testimonials</h2>
+    <div class="testimonials">
+      <div class="testimonial">“Dixith is a hardworking student with strong AI skills.” – Professor</div>
+      <div class="testimonial">“Delivered excellent results during internship.” – IBM Mentor</div>
+    </div>
+  </section>
+
+  <!-- ===== Gallery ===== -->
+  <section id="gallery" class="card">
+    <h2>Certificates</h2>
+    <div class="gallery">
+      <img src="cert1.png" alt="Certificate 1">
+      <img src="cert2.png" alt="Certificate 2">
+      <img src="cert3.png" alt="Certificate 3">
+    </div>
+  </section>
+
+  <!-- ===== Blog ===== -->
+  <section id="blog" class="card">
+    <h2>Blog / Articles</h2>
+    <div class="blog-post">
+      <h3>Future of AI in Education</h3>
+      <p>AI is revolutionizing learning through personalization and automation.</p>
+    </div>
+    <div class="blog-post">
+      <h3>Why Full Stack Development is in Demand</h3>
+      <p>Full stack developers are highly sought after for their versatility.</p>
+    </div>
+  </section>
+
+  <!-- ===== Contact ===== -->
+  <section id="contact" class="card">
+    <h2>Contact Me</h2>
+    <p>Email: <a href="mailto:dixithreddy82@gmail.com">dixithreddy82@gmail.com</a></p>
+    <p>Phone: <a href="tel:+918074520692">+91 8074520692</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/pannala-dixith-reddy-024b61317" target="_blank" rel="noopener noreferrer">linkedin.com/in/pannala-dixith-reddy</a></p>
+    <p>GitHub: <a href="https://github.com/dixith82" target="_blank" rel="noopener noreferrer">github.com/dixith82</a></p>
+    <p>Location: Hyderabad, India</p>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <p>© 2025 Pannala Dixith Reddy | Portfolio</p>
+  </footer>
+
+  <!-- Scroll to Top -->
+  <button id="topBtn" onclick="scrollToTop()">↑</button>
+
+  <script>
+    // Dark Mode Toggle
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+    // Scroll to Top
+    const topBtn = document.getElementById("topBtn");
+    window.onscroll = function() {
+      if (document.documentElement.scrollTop > 100) {
+        topBtn.style.display = "block";
+      } else {
+        topBtn.style.display = "none";
+      }
+    }
+    function scrollToTop() {
+      window.scrollTo({top:0, behavior:"smooth"});
+    }
+  </script>
+</body>
+</html>
