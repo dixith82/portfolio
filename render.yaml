@@ -1,7 +1,8 @@
 services:
-  - type: web
+  - type: static
     name: portfolio
     env: static
-    buildCommand: ""        # no build step needed for static HTML
-    staticPublishPath: "."  # serve files from root directory
+    branch: main
+    buildCommand: ""       # no build step needed
+    staticPublishPath: "." # serve files from root directory
     plan: free
